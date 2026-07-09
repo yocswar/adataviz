@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://cdn-icons-png.flaticon.com/128/40/40897.png"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>adataviz</title>
+    <meta
+      name="description"
+      content="Web qui affiche les arbres remarquables de Paris depuis l'API OpenData Paris"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Arbres remarquables de Paris</h1>
+      <p>Découvrez une sélection d'arbres remarquables de la ville de Paris</p>
+    </header>
+
+    <main class="main">
+      <section id="filtres" aria-labelledby="filtres-title">
+        <h2 id="filtres-title">Filtres</h2>
+      </section>
+
+      <section id="resultats" aria-labelledby="resultats-title">
+        <h2 id="resultats-title">Résultats</h2>
+        <p id="total-resultats"></p>
+        <div id="grille-cartes"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Projet Adataviz</p>
+    </footer>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
