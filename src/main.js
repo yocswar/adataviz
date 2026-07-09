@@ -1,29 +1,8 @@
 import "./style.css";
+import { formaterDonnee, creerParagraphe } from "./utils.js";
 
 const urlApi =
   "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/arbresremarquablesparis/records?limit=20";
-
-const formaterDonnee = (arbre) => {
-  return {
-    id: arbre.com_idarbre,
-    nom: arbre.arbres_libellefrancais,
-    arrondissement: arbre.arbres_arrondissement,
-    adresse: arbre.arbres_adresse,
-    datePlantation: arbre.arbres_dateplantation,
-    genre: arbre.arbres_genre,
-    espece: arbre.arbres_espece,
-    resume: arbre.com_resume,
-    description: arbre.com_descriptif,
-    photo: arbre.com_url_photo,
-  };
-};
-
-const creerParagraphe = (texte) => {
-  const paragraphe = document.createElement("p");
-  paragraphe.textContent = texte;
-
-  return paragraphe;
-};
 
 const creerCarte = (arbre) => {
   const carte = document.createElement("article");
