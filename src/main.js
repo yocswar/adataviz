@@ -18,20 +18,60 @@ const formaterDonnee = (arbre) => {
   };
 };
 
+const creerParagraphe = (texte) => {
+  const paragraphe = document.createElement("p");
+  paragraphe.textContent = texte;
+
+  return paragraphe;
+};
+
+const creerCarte = (arbre) => {
+  const carte = document.createElement("article");
+  carte.classList.add("carte");
+
+  const titre = document.createElement("h3");
+  titre.textContent = arbre.nom;
+
+  const arrondissement = creerParagraphe(arbre.arrondissement);
+  const genre = creerParagraphe(`Genre : ${arbre.genre}`);
+  const espece = creerParagraphe(`Espèce : ${arbre.espece}`);
+  const resume = creerParagraphe(arbre.resume || "Aucun résumé disponible.");
+
+  carte.append(titre, arrondissement, genre, espece, resume);
+
+  return carte;
+};
+
+const afficherTotalResultats = (nombre) => {
+  const totalResultats = document.querySelector("#total-resultats");
+  totalResultats.textContent = `${nombre} arbres trouvés`;
+};
+
+const afficherCartes = (arbres) => {
+  const grilleCartes = document.querySelector("#grille-cartes");
+
+  grilleCartes.innerHTML = "";
+
+  arbres.forEach((arbre) => {
+    const carte = creerCarte(arbre);
+    grilleCartes.appendChild(carte);
+  });
+};
+
 async function chargerDonnees() {
   try {
     const response = await fetch(urlApi);
     const donnees = await response.json();
 
-    console.log(donnees);
-    console.log(donnees.results);
-
     const arbresFormates = donnees.results.map(formaterDonnee);
 
-    console.log(arbresFormates);
+    console.log("Données brutes :", donnees);
+    console.log("Données formatées :", arbresFormates);
+
+    afficherTotalResultats(arbresFormates.length);
+    afficherCartes(arbresFormates);
   } catch (error) {
     console.error("Erreur pendant le chargement des données:", error);
   }
 }
-
 chargerDonnees();

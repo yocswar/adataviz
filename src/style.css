@@ -4,7 +4,105 @@
   box-sizing: border-box;
 }
 body {
-  font-family: system-ui, sans-serif;
-  background-color: #f4f7f2;
-  color: #1f2933;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fff;
+  color: #123;
+  min-height: 100vh;
+}
+
+.header,
+.main,
+.footer {
+  width: min(1100px, 90%);
+  margin: 0 auto;
+}
+
+.header {
+  padding: 3rem 0;
+}
+
+.header h1 {
+  margin-bottom: 0.75rem;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.1;
+  color: #164;
+}
+
+.header p {
+  max-width: 680px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #456;
+}
+
+.main {
+  padding-bottom: 4rem;
+}
+
+#filtres,
+#resultats {
+  margin-bottom: 2rem;
+}
+
+#filtres-title,
+#resultats-title {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #164;
+}
+
+#total-resultats {
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  color: #345;
+}
+
+#grille-cartes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.carte {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-height: 230px;
+  padding: 1.25rem;
+  border: 1px solid #ded;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(31, 41, 51, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.carte:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(31, 41, 51, 0.14);
+}
+
+.carte h3 {
+  font-size: 1.25rem;
+  line-height: 1.25;
+  color: #164;
+}
+
+.carte p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #345;
+}
+
+.carte p:nth-of-type(1) {
+  font-weight: 700;
+  color: #682;
+}
+
+.footer {
+  padding: 2rem 0;
+  border-top: 1px solid #ded;
+  font-size: 0.9rem;
+  color: #678;
 }
