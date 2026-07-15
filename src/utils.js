@@ -19,3 +19,11 @@ export const creerParagraphe = (texte) => {
 
   return paragraphe;
 };
+
+export const filterParArrondissement = (arbres, arrondissement) => {
+  if (arrondissement === "") {
+    return arbres;
+  }
+
+  return arbres.filter((arbre) => arbre.arrondissement === arrondissement);
+};
