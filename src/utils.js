@@ -20,7 +20,7 @@ export const creerParagraphe = (texte) => {
   return paragraphe;
 };
 
-export const filterParArrondissement = (arbres, arrondissement) => {
+export const filtrerParArrondissement = (arbres, arrondissement) => {
   if (arrondissement === "") {
     return arbres;
   }
@@ -28,7 +28,7 @@ export const filterParArrondissement = (arbres, arrondissement) => {
   return arbres.filter((arbre) => arbre.arrondissement === arrondissement);
 };
 
-export const filterParNom = (arbres, recherche) => {
+export const filtrerParNom = (arbres, recherche) => {
   const rechercheNormalisee = recherche.trim().toLowerCase();
 
   if (rechercheNormalisee === "") {

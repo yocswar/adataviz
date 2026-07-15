@@ -2,8 +2,8 @@ import "./style.css";
 import {
   formaterDonnee,
   creerParagraphe,
-  filterParArrondissement,
-  filterParNom,
+  filtrerParArrondissement,
+  filtrerParNom,
 } from "./utils.js";
 
 const urlApi =
@@ -50,10 +50,10 @@ const remplirFiltreArrondissement = (arbres) => {
   const uniques = [...new Set(arrondissements)];
   uniques.sort();
 
-  uniques.forEach((arrondissements) => {
+  uniques.forEach((arrondissement) => {
     const option = document.createElement("option");
-    option.value = arrondissements;
-    option.textContent = arrondissements;
+    option.value = arrondissement;
+    option.textContent = arrondissement;
 
     selectElement.append(option);
   });
@@ -97,6 +97,11 @@ const activerFiltres = (arbres) => {
 async function chargerDonnees() {
   try {
     const response = await fetch(urlApi);
+
+    if (!response.ok) {
+      throw new Error(`Erreur HTTP : ${response.status}`);
+    }
+
     const donnees = await response.json();
 
     const arbresFormates = donnees.results.map(formaterDonnee);
