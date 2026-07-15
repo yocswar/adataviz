@@ -27,3 +27,15 @@ export const filterParArrondissement = (arbres, arrondissement) => {
 
   return arbres.filter((arbre) => arbre.arrondissement === arrondissement);
 };
+
+export const filterParNom = (arbres, recherche) => {
+  const rechercheNormalisee = recherche.trim().toLowerCase();
+
+  if (rechercheNormalisee === "") {
+    return arbres;
+  }
+
+  return arbres.filter((arbre) => {
+    return arbre.nom.toLowerCase().includes(rechercheNormalisee);
+  });
+};

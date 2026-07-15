@@ -3,6 +3,7 @@ import {
   formaterDonnee,
   creerParagraphe,
   filterParArrondissement,
+  filterParNom,
 } from "./utils.js";
 
 const urlApi =
@@ -42,7 +43,7 @@ const afficherCartes = (arbres) => {
 };
 
 const remplirFiltreArrondissement = (arbres) => {
-  const selectElement = document.querySelector("#filtre-arrondisement");
+  const selectElement = document.querySelector("#filtre-arrondissement");
 
   const arrondissements = arbres.map((arbre) => arbre.arrondissement);
 
@@ -63,17 +64,33 @@ const mettreAJourResultats = (arbres) => {
   afficherCartes(arbres);
 };
 
-const activerFiltreArrondissement = (arbres) => {
-  const selectElement = document.querySelector("#filtre-arrondisement");
+const appliquerFiltres = (arbres) => {
+  const champRecherche = document.querySelector("#recherche-nom");
+  const selectArrondissement = document.querySelector("#filtre-arrondissement");
 
-  selectElement.addEventListener("change", (event) => {
-    const arrondissementSelectionne = event.target.value;
-    const arbresFiltres = filterParArrondissement(
-      arbres,
-      arrondissementSelectionne,
-    );
+  const recherche = champRecherche.value;
+  const arrondissement = selectArrondissement.value;
 
-    mettreAJourResultats(arbresFiltres);
+  const arbresFiltresParNom = filtrerParNom(arbres, recherche);
+
+  const arbresFiltres = filtrerParArrondissement(
+    arbresFiltresParNom,
+    arrondissement,
+  );
+
+  mettreAJourResultats(arbresFiltres);
+};
+
+const activerFiltres = (arbres) => {
+  const champRecherche = document.querySelector("#recherche-nom");
+  const selectArrondissement = document.querySelector("#filtre-arrondissement");
+
+  champRecherche.addEventListener("input", () => {
+    appliquerFiltres(arbres);
+  });
+
+  selectArrondissement.addEventListener("change", () => {
+    appliquerFiltres(arbres);
   });
 };
 
@@ -85,7 +102,7 @@ async function chargerDonnees() {
     const arbresFormates = donnees.results.map(formaterDonnee);
 
     remplirFiltreArrondissement(arbresFormates);
-    activerFiltreArrondissement(arbresFormates);
+    activerFiltres(arbresFormates);
     mettreAJourResultats(arbresFormates);
 
     console.log("Données brutes :", donnees);
