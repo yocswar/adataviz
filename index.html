@@ -23,6 +23,26 @@
     <main class="main">
       <section id="filtres" aria-labelledby="filtres-title">
         <h2 id="filtres-title">Filtres</h2>
+
+        <div class="filtres-conteneur">
+          <div class="filtre-groupe">
+            <label for="recherche-nom">Rechercher un arbre</label>
+
+            <input
+              id="recherche-nom"
+              type="search"
+              placeholder="Ex. Marronnier"
+            />
+          </div>
+
+          <div class="filtre-groupe">
+            <label for="filtre-arrondissement">Arrondissement</label>
+
+            <select id="filtre-arrondissement">
+              <option value="">Tous les arrondissements</option>
+            </select>
+          </div>
+        </div>
       </section>
 
       <section id="resultats" aria-labelledby="resultats-title">
