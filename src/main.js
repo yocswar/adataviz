@@ -13,6 +13,15 @@ const creerCarte = (arbre) => {
   const carte = document.createElement("article");
   carte.classList.add("carte");
 
+  if (arbre.photo) {
+    const image = document.createElement("img");
+
+    image.src = arbre.photo;
+    image.alt = arbre.nom;
+
+    carte.append(image);
+  }
+
   const titre = document.createElement("h3");
   titre.textContent = arbre.nom;
 
