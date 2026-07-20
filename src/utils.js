@@ -9,7 +9,7 @@ export const formaterDonnee = (arbre) => {
     espece: arbre.arbres_espece,
     resume: arbre.com_resume,
     description: arbre.com_descriptif,
-    photo: arbre.com_url_photo,
+    photo: arbre.com_url_photo1,
   };
 };
 
